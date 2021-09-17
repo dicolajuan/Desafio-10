@@ -1,0 +1,49 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 20%;
+  background-color: #EFF45C;
+  height: 30px; /* only for demonstration, should be removed */
+  font-size: 25px;
+  color:#c4a702d8
+}
+</style>
+
+<h1>Productos</h1>
+
+{{#if listExists}}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Thumbnail</th>
+        </tr>
+        {{#each listProducts}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>$ {{this.price}}</td>
+                <td><img src={{this.thumbnail}} width="50" height="33"></td>
+            </tr>
+        {{/each}}
+    </table>
+    {{else}}
+    <article>
+        No hay productos
+    </article>
+{{/if}}
