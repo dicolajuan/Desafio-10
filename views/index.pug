@@ -1,0 +1,24 @@
+html 
+    head
+        title="Aplicacion con PUG" 
+        style
+            include layouts/style.css
+    body
+        h1 Productos
+        
+        if listExists            
+            table
+                tr
+                    th Title
+                    th Price
+                    th Thumbnail 
+                
+                each prod in objProductos
+                    tr
+                        td=prod.title
+                        td=prod.price
+                        td: img(
+                            src=prod.thumbnail width="50" height="33"
+                        )
+        else
+            article No hay productos

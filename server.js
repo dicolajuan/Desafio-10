@@ -17,17 +17,8 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api', router);
 app.use(express.static('public'));
 
-app.engine(
-    "hbs",
-    handlebars({
-        extname: ".hbs",
-        defaultLayout: "index.hbs",
-        layoutsDir: "./views/layouts"
-    })
-);
-
 app.set('views', './views'); // especifica el directorio de vistas
-app.set('view engine', 'hbs'); // registra el motor de plantillas
+app.set('view engine', 'pug'); // registra el motor de plantillas
 
 router.get('/', (req,res)=>{
 
@@ -98,5 +89,5 @@ router.delete('/productos/eliminar/:id', (req,res) => {
 
 router.get('/productos/vista', (req,res) => {
     let listExist = objProductos.length > 0 ? true : false;
-    res.render('ListarProductos', { listProducts: objProductos, listExists: listExist });
+    res.render('index.pug', { objProductos, listExists: listExist });
 });
