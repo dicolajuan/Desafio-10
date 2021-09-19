@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Mi aplicación EJS</title>
+    </head>
+
+    <body class="container">
+
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 60%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            article {
+              float: left;
+              padding: 20px;
+              width: 20%;
+              background-color: #EFF45C;
+              height: 30px; /* only for demonstration, should be removed */
+              font-size: 25px;
+              color:#c4a702d8
+            }
+            </style>
+
+        <main>
+            <h1>Productos</h1>
+            <% if(listExists){ %>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Thumbnail</th>
+                    </tr>
+                    <% listProducts.forEach(function(prod) { %>
+                        <tr>
+                            <td><%= prod.title %></td>
+                            <td>$<%= prod.price %></td>
+                            <td><img src='<%= prod.thumbnail %>'' width="50" height="33"></td>
+                        </tr>
+                    <% }); %>
+                </table>            
+            <% } else { %>
+                <article>
+                    No hay productos
+                </article>
+            <% } %>
+
+        </main>
+
+    </body>
+
+</html>
